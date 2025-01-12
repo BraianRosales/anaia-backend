@@ -1,0 +1,43 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Sensitive configuration files
+settings/settings.yaml
+*.env
+*.key
+*.pem
+*.crt
+
+# Go build artifacts
+/bin/
+/pkg/
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+
+# Go dependency files
+/go.sum
+/go.mod
+/vendor/
+
+# Temporary and debug files
+*.log
+*.tmp
+*.test
+
+# IDE and development tool files
+.vscode/
+.idea/
+*.iml
+
+# Go cache and build tool files
+/.cache/
+/dist/
+
+# Local configuration files
+.env.local
+.env.*
+.settings.local
