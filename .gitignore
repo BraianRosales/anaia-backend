@@ -41,3 +41,6 @@ settings/settings.yaml
 .env.local
 .env.*
 .settings.local
+
+# NOTAS
+notes.md
