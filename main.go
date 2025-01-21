@@ -3,6 +3,7 @@ package main
 import (
 	"anaia-backend/database"
 	"anaia-backend/internal/repository"
+	"anaia-backend/internal/service"
 	"anaia-backend/settings"
 	"context"
 
@@ -18,6 +19,7 @@ func main() {
 			settings.New,
 			database.New,
 			repository.New,
+			service.New,
 		),
 
 		/*Register a function that will be executed once all the necessary dependencies are ready.*/

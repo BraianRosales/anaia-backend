@@ -22,6 +22,7 @@ type repo struct {
 
 // New is a function that initializes the repository.
 func New(db *sqlx.DB) Repository {
+
 	return &repo{
 		db: db,
 	}
