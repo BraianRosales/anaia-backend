@@ -7,7 +7,6 @@ import (
 	"anaia-backend/settings"
 	"context"
 
-	"github.com/jmoiron/sqlx"
 	"go.uber.org/fx"
 )
 
@@ -24,14 +23,21 @@ func main() {
 
 		/*Register a function that will be executed once all the necessary dependencies are ready.*/
 		fx.Invoke(
-			func(db *sqlx.DB) {
-				_, err := db.Query("select * from USUARIOS")
+			func(ctx context.Context, serv service.Service) {
+				err := serv.RegisterUser(ctx, "Braian", "Rosales", "braianezequielrosales@gmail.com", "Braian154059", 1)
 				if err != nil {
 					panic(err)
 				}
+
+				u, err := serv.LoginUser(ctx, "braianezequielrosales@gmail.com", "Braian154059")
+				if err != nil {
+					panic(err)
+				}
+				println(u.Name)
 			},
 		),
 	)
 
 	app.Run()
+	// TODO: I need a way to put role_id in the users table.
 }

@@ -44,17 +44,17 @@ func (_m *MockRepository) GetUserByEmail(ctx context.Context, email string) (*en
 	return r0, r1
 }
 
-// SaveUser provides a mock function with given fields: ctx, name, lastname, email, password
-func (_m *MockRepository) SaveUser(ctx context.Context, name string, lastname string, email string, password string) error {
-	ret := _m.Called(ctx, name, lastname, email, password)
+// SaveUser provides a mock function with given fields: ctx, name, lastname, email, password, roleId
+func (_m *MockRepository) SaveUser(ctx context.Context, name string, lastname string, email string, password string, roleId int64) error {
+	ret := _m.Called(ctx, name, lastname, email, password, roleId)
 
 	if len(ret) == 0 {
 		panic("no return value specified for SaveUser")
 	}
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) error); ok {
-		r0 = rf(ctx, name, lastname, email, password)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, int64) error); ok {
+		r0 = rf(ctx, name, lastname, email, password, roleId)
 	} else {
 		r0 = ret.Error(0)
 	}
