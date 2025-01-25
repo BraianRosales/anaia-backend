@@ -39,5 +39,4 @@ func main() {
 	)
 
 	app.Run()
-	// TODO: I need a way to put role_id in the users table.
 }
