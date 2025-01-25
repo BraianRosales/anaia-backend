@@ -12,7 +12,7 @@ var (
 	ErrInvalidPassword   = errors.New("invalid password")
 )
 
-func (s *serv) RegisterUser(ctx context.Context, name string, lastname string, email string, password string, roleId int64) error {
+func (s *serv) RegisterUser(ctx context.Context, name string, lastname string, email string, password string) error {
 	u, _ := s.repo.GetUserByEmail(ctx, email)
 	if u != nil {
 		return ErrUserAlreadyExists
@@ -26,7 +26,7 @@ func (s *serv) RegisterUser(ctx context.Context, name string, lastname string, e
 
 	pass := encryption.ToBase64(pp)
 
-	return s.repo.SaveUser(ctx, name, lastname, email, pass, roleId)
+	return s.repo.SaveUser(ctx, name, lastname, email, pass)
 }
 
 func (s *serv) LoginUser(ctx context.Context, email, password string) (*models.User, error) {
@@ -54,6 +54,5 @@ func (s *serv) LoginUser(ctx context.Context, email, password string) (*models.U
 		Name:     u.Name,
 		LastName: u.LastName,
 		Email:    u.Email,
-		RoleId:   u.RoleId,
 	}, nil
 }

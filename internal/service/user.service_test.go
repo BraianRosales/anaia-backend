@@ -22,7 +22,7 @@ func TestMain(m *testing.M) {
 	repo = &repository.MockRepository{}
 	repo.On("GetUserByEmail", mock.Anything, "test@test.com").Return(nil, nil)
 	repo.On("GetUserByEmail", mock.Anything, "test@exist.com").Return(u, nil)
-	repo.On("SaveUser", mock.Anything, mock.Anything, mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
+	repo.On("SaveUser", mock.Anything, mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 	s = New(repo)
 
@@ -36,7 +36,6 @@ func TestRegisterUser(t *testing.T) {
 		Lastname      string
 		Email         string
 		Password      string
-		RoleId        int64
 		ExpectedError error
 	}{
 		// Test cases. The first one is a success case, the second one is a failure case.
@@ -45,7 +44,6 @@ func TestRegisterUser(t *testing.T) {
 			Lastname:      "Rosales",
 			Email:         "test@test.com",
 			Password:      "validPassword",
-			RoleId:        1,
 			ExpectedError: nil,
 		},
 		{
@@ -53,7 +51,6 @@ func TestRegisterUser(t *testing.T) {
 			Lastname:      "Caminero",
 			Email:         "test@exist.com",
 			Password:      "validPassword",
-			RoleId:        1,
 			ExpectedError: ErrUserAlreadyExists,
 		},
 	}
@@ -67,7 +64,7 @@ func TestRegisterUser(t *testing.T) {
 			t.Parallel()
 			repo.Mock.Test(t)
 
-			err := s.RegisterUser(ctx, tc.Name, tc.Lastname, tc.Email, tc.Password, tc.RoleId)
+			err := s.RegisterUser(ctx, tc.Name, tc.Lastname, tc.Email, tc.Password)
 			if err != tc.ExpectedError {
 				t.Errorf("Expected error %v, got %v", tc.ExpectedError, err)
 			}

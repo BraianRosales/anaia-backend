@@ -5,5 +5,4 @@ type User struct {
 	Name     string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Email    string `json:"email"`
-	RoleId   int64  `json:"role_id"`
 }

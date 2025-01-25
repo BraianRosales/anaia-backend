@@ -10,7 +10,7 @@ import (
 
 //go:generate mockery --name=Service --output=service --inpackage
 type Service interface {
-	RegisterUser(ctx context.Context, name string, lastname string, email string, password string, roleId int64) error
+	RegisterUser(ctx context.Context, name string, lastname string, email string, password string) error
 	LoginUser(ctx context.Context, email, password string) (*models.User, error)
 }
 

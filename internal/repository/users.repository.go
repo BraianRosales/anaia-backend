@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	qryInsertUser = `INSERT INTO USERS (first_name, last_name, email, password, role_id) VALUES (?, ?, ?, ?, ?);`
+	qryInsertUser = `INSERT INTO USERS (first_name, last_name, email, password) VALUES (?, ?, ?, ?);`
 
 	qryGetUserByEmail = `
 		SELECT 
@@ -14,15 +14,14 @@ const (
 			first_name, 
 			last_name, 
 			email, 
-			password,
-			role_id
+			password
 		FROM USERS 
 		WHERE email = ?;
 	`
 )
 
-func (r *repo) SaveUser(ctx context.Context, name string, lastname string, email string, password string, roleId int64) error {
-	_, err := r.db.ExecContext(ctx, qryInsertUser, name, lastname, email, password, roleId)
+func (r *repo) SaveUser(ctx context.Context, name string, lastname string, email string, password string) error {
+	_, err := r.db.ExecContext(ctx, qryInsertUser, name, lastname, email, password)
 	return err
 }
 

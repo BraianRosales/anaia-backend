@@ -24,7 +24,7 @@ func main() {
 		/*Register a function that will be executed once all the necessary dependencies are ready.*/
 		fx.Invoke(
 			func(ctx context.Context, serv service.Service) {
-				err := serv.RegisterUser(ctx, "Braian", "Rosales", "braianezequielrosales@gmail.com", "Braian154059", 1)
+				err := serv.RegisterUser(ctx, "Braian", "Rosales", "braianezequielrosales@gmail.com", "Braian154059")
 				if err != nil {
 					panic(err)
 				}

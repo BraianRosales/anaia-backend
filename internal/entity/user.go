@@ -6,5 +6,4 @@ type User struct {
 	LastName string `db:"last_name"`
 	Email    string `db:"email"`
 	Password string `db:"password"`
-	RoleId   int64  `db:"role_id"`
 }

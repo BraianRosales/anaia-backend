@@ -44,17 +44,17 @@ func (_m *MockService) LoginUser(ctx context.Context, email string, password str
 	return r0, r1
 }
 
-// RegisterUser provides a mock function with given fields: ctx, name, lastname, email, password, roleId
-func (_m *MockService) RegisterUser(ctx context.Context, name string, lastname string, email string, password string, roleId int64) error {
-	ret := _m.Called(ctx, name, lastname, email, password, roleId)
+// RegisterUser provides a mock function with given fields: ctx, name, lastname, email, password
+func (_m *MockService) RegisterUser(ctx context.Context, name string, lastname string, email string, password string) error {
+	ret := _m.Called(ctx, name, lastname, email, password)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RegisterUser")
 	}
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, int64) error); ok {
-		r0 = rf(ctx, name, lastname, email, password, roleId)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) error); ok {
+		r0 = rf(ctx, name, lastname, email, password)
 	} else {
 		r0 = ret.Error(0)
 	}
